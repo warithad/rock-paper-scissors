@@ -1,77 +1,92 @@
-console.log('hello world');
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
-    const x = Math.floor(Math.random() * 3);
-    if(x == 1){
-        return 'rock';
-    }
-    else if(x == 2){
-        return 'paper';
-    }
-    else {
-        return 'scissors';
-    }
+    const comChoice = Math.floor(Math.random() * 3);
 
+    if(comChoice === 1) return 'rock';
+    else if(comChoice === 2) return 'paper';
+    else return 'scissors';
 }
+
 function playRound(playerSelection, computerSelection){
-    const p = playerSelection.toLowerCase();
-    if(p == computerSelection){
-        return -1;
+
+    if(computerSelection === playerSelection){ 
+        return 'Draw match! ' + computerSelection + " is equal to " + playerSelection;
     }
-    if(p == 'rock'){
-        if(computerSelection == 'paper'){
-            console.log("You lose, Paper beats Rock");
-            return 1;
+    if(playerSelection === 'rock'){
+        if(computerSelection === 'paper') {
+            return 'You lost! ' + computerSelection + ' beats ' + playerSelection;
         }
         else {
-            console.log("You win, Rock beats scissors");
-            return 0;
+            return 'You won! ' + playerSelection + ' beats ' + computerSelection;
+    }
+    }
+    else if(playerSelection === 'paper'){
+        if(computerSelection === 'scissors'){
+            return 'You lost! ' + computerSelection + ' beats ' + playerSelection;
+        }           
+         else {
+                return 'You won! ' + playerSelection + ' beats ' + computerSelection;
         }
     }
-    else if(p == 'paper'){
-        if(computerSelection == 'rock'){
-            console.log("You win, Paper beats rock");
-            return 0;
+    else{
+        if(computerSelection === 'rock'){
+             return 'You lost! ' + computerSelection + ' beats ' + playerSelection;
         }
-        else {
-            console.log("You lose, Scissors beats paper");
-            return 1;
-        }
-    }
-    else {
-        if(computerSelection == 'paper'){
-            console.log("You win, Scissors beats paper");
-            return 0;
-        }
-        else {
-            console.log("You lose, Rock beats scissors");
-            return 1;
-        }
+         else {
+            return 'You won! ' + playerSelection + ' beats ' + computerSelection;
+         }
     }
 }
-function game(){
-    let player = 0;
-    let computer = 0;
-    for(let i = 0; i < 5; i++){
-        const ans = playRound(prompt("enter a string"), getComputerChoice());
-        if(ans == -1){
-            i -=1;
-            continue;
-        }
-        else if (ans == 0){
-            player +=1;
-        }
-        else {
-            computer +=1;
-        }
-    }
-    if(player > computer){
-        console.log("you won");
-    }
-    else {
-        console.log("you lost boy");
-    }
 
-    console.log("final scores player: " + player  + " computer: " + computer);
-}
+const body = document.body;
 
-game();
+const rock = document.createElement('button');
+rock.textContent = 'Rock';
+
+const paper = document.createElement('button');
+paper.textContent = 'Paper';
+
+const scissors = document.createElement('button');
+scissors.textContent = 'Scissors';
+
+const results = document.createElement('div');
+
+const playerRunning = document.createElement('div');
+const computerRunning = document.createElement('div');
+const finalWinner = document.createElement('h1');
+
+
+body.append(rock, paper, scissors);
+body.appendChild(results);
+
+body.appendChild(playerRunning);
+body.appendChild(computerRunning);
+body.appendChild(finalWinner);
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () =>{
+        if(playerScore == 0 && computerScore == 0){
+            finalWinner.textContent = "";
+        }
+        results.textContent = playRound(button.textContent.toLowerCase(), getComputerChoice());
+
+        if(results.textContent.includes('won')) playerScore++;
+        else if(results.textContent.includes('lost')) computerScore++;
+        
+        if(playerScore == 5 || computerScore == 5){
+            if(playerScore == 5) finalWinner.textContent = 'You win';
+            else if(computerScore == 5) finalWinner.textContent = 'Computer wins you lose';
+
+            playerScore = 0;
+            computerScore = 0;
+        }
+        playerRunning.textContent = 'Player Score: ' + playerScore;
+        computerRunning.textContent = 'Computer Score: ' + computerScore;
+    });
+});
+
+
