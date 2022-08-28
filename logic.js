@@ -39,54 +39,54 @@ function playRound(playerSelection, computerSelection){
          }
     }
 }
+function reset(p, c){
+    p = 0;
+    c = 0;
+}
 
-const body = document.body;
+const btns = document.querySelectorAll(".choice");
+const currentWinner = document.querySelector(".currentWinner"); 
 
-const rock = document.createElement('button');
-rock.textContent = 'Rock';
+const player = document.querySelector(".player");
+const computer = document.querySelector(".computer");
 
-const paper = document.createElement('button');
-paper.textContent = 'Paper';
+const modal = document.querySelector(".modal");
+const declare = document.querySelector(".declare");
 
-const scissors = document.createElement('button');
-scissors.textContent = 'Scissors';
+const playAgain = document.querySelector(".play-again");
 
-const results = document.createElement('div');
+playAgain.addEventListener('click', () => {
+    modal.close();
+})
 
-const playerRunning = document.createElement('div');
-const computerRunning = document.createElement('div');
-const finalWinner = document.createElement('h1');
-
-
-body.append(rock, paper, scissors);
-body.appendChild(results);
-
-body.appendChild(playerRunning);
-body.appendChild(computerRunning);
-body.appendChild(finalWinner);
-
-const buttons = document.querySelectorAll('button');
-
-buttons.forEach(button => {
-    button.addEventListener('click', () =>{
-        if(playerScore == 0 && computerScore == 0){
-            finalWinner.textContent = "";
+btns.forEach(btn => 
+    btn.addEventListener('click', () => {
+        const ans = playRound(btn.textContent, getComputerChoice());
+        if(ans.includes('won')) {
+            playerScore++;
+            player.textContent = "Player Score: " + playerScore;
         }
-        results.textContent = playRound(button.textContent.toLowerCase(), getComputerChoice());
+        else if(ans.includes('lost')) {
+            computerScore++;
+            computer.textContent = "Computer Score: " + computerScore;
+        }
+        currentWinner.textContent = ans;
 
-        if(results.textContent.includes('won')) playerScore++;
-        else if(results.textContent.includes('lost')) computerScore++;
-        
         if(playerScore == 5 || computerScore == 5){
-            if(playerScore == 5) finalWinner.textContent = 'You win';
-            else if(computerScore == 5) finalWinner.textContent = 'Computer wins you lose';
-
+            if(playerScore == 5) {
+                declare.textContent = "You win!";
+            }
+            else if(computerScore == 5) {
+                declare.textContent = "You lose!";
+            }
+            modal.showModal();
             playerScore = 0;
             computerScore = 0;
+            
+            player.textContent = "Player Score: 0";
+            computer.textContent = "Computer Score: 0";
         }
-        playerRunning.textContent = 'Player Score: ' + playerScore;
-        computerRunning.textContent = 'Computer Score: ' + computerScore;
-    });
-});
+}));
+
 
 

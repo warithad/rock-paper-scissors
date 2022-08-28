@@ -1,0 +1,113 @@
+body{
+    margin: 0px;
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+/* header */
+.header, .footer {
+   padding-top: 20px;
+   padding-bottom: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #020313;
+}
+.header p{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: x-large;
+    color: beige;
+    border: 0px;
+}
+
+/* btn */
+.btns{
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+    padding-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.choice {
+    width: 300px;
+    height: 100px;
+    background-color: azure;
+    border-radius: 10px;
+    border-color: aqua;
+    border-width: 6px;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+/*current winner*/
+
+.currentWinner{
+    color: azure;
+    justify-self: center;
+    align-self: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 100px;
+}
+/*results*/
+
+.results {
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.results div {
+    color:azure;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+/*footer*/
+
+.footer {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    font-weight: bold;
+    color: azure;
+
+}
+/*modal*/
+.modal {
+    width: 250px;
+    height: 150px;
+    flex-direction: column;
+    border-width: 0px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.play-again {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: large;
+    align-self: flex-end;
+    background-color: aliceblue;
+    border-color: black;
+    border-radius: 7px;
+    border-width: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.declare {
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    padding-top: 20px;
+    margin-bottom: 40px;
+}

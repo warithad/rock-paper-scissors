@@ -1,5 +1,3 @@
 # rock-paper-scissors
-This is a simple rock-paper-scissors game that can be played on the browser console. 
-To play , you have five rounds to enter a string i.e (rock, paper or scissors) the computer browser generates its own value
-to compare. The winner is chosen after a game of 5 rounds 
-Dont lose to a machine lol
+This is a rock paper scissors game. You play a game of five with the computer and winner is chosen at the end 
+try not to lose!!!

@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="style.css" >
+    </head>
     <body>
+        <div class="container">
+            <div class="header">
+                <p>ROCK PAPER SCISSORS</p>
+            </div>
+            <div class="btns">
+                <button class="choice" id="rock">ROCK</button>
+                <button class="choice" id="paper">PAPER</button>
+                <button class="choice" id="scissors">SCISSORS</button>
+            </div>
+
+            <dialog class="modal">
+                <div class="declare"></div>
+                <button class="play-again">Play Again</button>
+            </dialog>
+            
+            <div class="currentWinner">Choose your weapon</div>
+            <div class="results">
+                    <div class="player">Player score: 0</div>
+                    <div class="computer">Computer score: 0</div>
+            </div>
+            <div class="footer"> Copyright &copy;<a href="https://github.com/warithad/">me</a>August 2022</div>
+        </div>
     </body>
+    
     <script src="logic.js"></script>
 </html>
