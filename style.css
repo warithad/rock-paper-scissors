@@ -37,9 +37,8 @@ body{
     width: 300px;
     height: 100px;
     background-color: azure;
-    border-radius: 10px;
-    border-color: aqua;
-    border-width: 6px;
+    border-radius: 20px;
+    border-width: 0px;
     font-weight: bolder;
     font-size: xx-large;
 }
