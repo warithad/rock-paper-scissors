@@ -61,7 +61,7 @@ playAgain.addEventListener('click', () => {
 
 btns.forEach(btn => 
     btn.addEventListener('click', () => {
-        const ans = playRound(btn.textContent, getComputerChoice());
+        const ans = playRound(btn.textContent.toLowerCase(), getComputerChoice());
         if(ans.includes('won')) {
             playerScore++;
             player.textContent = "Player Score: " + playerScore;
